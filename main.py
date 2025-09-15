@@ -10,7 +10,7 @@ jeu.pic[0,0] = 3
 jeu.pic[0,1] = 2
 jeu.pic[0,2] = 1
 
-#init de la partie finale voulu 
+#init de la partie finale voulu => Condition d'arret 
 jeu_finale = Jeu_Hanoi()
 
 Jeu_final.pic[2,0] = 3

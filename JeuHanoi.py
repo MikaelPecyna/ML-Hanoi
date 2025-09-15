@@ -7,3 +7,6 @@ class Jeu_Hanoi:
         self.nombre_palet = np.zeros(3, dtype=np.int)
         pass
 
+
+        
+         
