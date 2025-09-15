@@ -16,13 +16,11 @@ class GameHandler:
         if self.pic_vide(jeu, start):
             return False
         if start == end:
-            return False
-
+        	return False
+        if jeu.getHighest(end) == 0:
+        	return True
         if jeu.getHighest(start) > jeu.getHighest(end):
-            if jeu.getHighest(end) == 0:
-                return True
             return False
-
         return True
 
         # Logique pour gérer les règles du jeu
@@ -33,11 +31,12 @@ class GameHandler:
         # Prendre la highest de start 
         # La mettre "le plus haut de end" 
         value = jeu.getHighest(start)
+        print("Value = ", value)
         
         jeu.deletePalet(start)
         jeu.addPalet(value, end)
         
-        self.alreadySeen.append(self.nombre_situation(jeu))
+        #self.alreadySeen.append(self.nombre_situation(jeu))
 
     def situation_non_vue(self, jeu, start, end):
         self.mon_jeu = Jeu_Hanoi()

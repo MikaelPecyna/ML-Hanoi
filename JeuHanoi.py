@@ -15,9 +15,8 @@ class Jeu_Hanoi:
         return self.pic
 
     def getHighest(self, index):
-        for i in range(2, -1, -1):  # Parcours de la colonne de la tour spécifiée
-            if self.pic[index][i] != 0:  # Si un palet est trouvé (non nul)
-                return self.pic[index][i]  # Retourne la valeur du palet le plus haut
+        if self.nombre_palet[index] != 0 : 
+        	return self.pic[index][self.nombre_palet[index]-1]
         return 0  # Retourne 0 si aucun palet n'est trouvé sur la tour
         
     def addPalet(self, value, index):
