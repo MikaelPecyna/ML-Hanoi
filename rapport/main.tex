@@ -1,0 +1,77 @@
+\documentclass[12pt, a4paper]{article}
+
+% ----- Packages essentiels -----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+% ----- Informations du document -----
+\title{Rapport de Mini-Projet Informatique\\
+\large{Titre de votre Projet}}
+\author{Nom Prénom}
+\date{\today}
+
+% ----- Personnalisation en-tête et pied de page -----
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Nom du Projet}
+\lhead{Nom Prénom}
+\cfoot{\thepage}
+
+\begin{document}
+
+% ----- Page de garde -----
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\tableofcontents
+\thispagestyle{fancy}
+
+% ---
+\section{Introduction}
+L'objectif de ce projet est la conception et la réalisation d'un système expert pour résoudre le problème du "pic-vide". Notre travail se concentre sur la mise en place d'une base de connaissances robuste et d'un moteur d'inférence en chaînage avant, afin d'explorer et de valider une solution algorithmique.
+
+---
+\section{Mise en place de la Base de Connaissance}
+Nous avons structuré notre base de connaissances autour de la **situation de jeu**, qui stocke l'état du plateau à un instant donné. La **base de faits** contient l'ensemble des règles et des situations rencontrées.
+
+\subsection{Fonctions de base}
+\begin{itemize}
+    \item \textbf{nombre\_situation(jeu)} : Convertit l'état du jeu en un nombre entier unique pour identifier rapidement les situations déjà vues. Cela permet d'éviter les boucles infinies.
+    \item \textbf{pic\_vide(), regle\_jeu(), effectue\_deplacement()} : Ces fonctions élémentaires modélisent les actions possibles sur le plateau, l'application des règles et les déplacements du pic.
+    \item \textbf{situation\_non\_vue()} : Vérifie si un état de jeu a déjà été visité. C'est crucial pour l'efficacité de l'algorithme.
+    \item \textbf{activation\_des\_règles()} : Gère le déclenchement des règles en fonction de la situation actuelle.
+\end{itemize}
+
+---
+\section{Moteur d'Inférence (Chaînage Avant)}
+Notre moteur d'inférence est basé sur un **chaînage avant**. À partir de la situation de départ (base de fait), il applique de manière itérative les règles pour atteindre l'état final.
+
+\subsection{Processus}
+1.  Le moteur d'inférence examine l'état actuel du jeu.
+2.  Il parcourt les règles disponibles et choisit celle à appliquer.
+3.  Il exécute la règle et met à jour la base de faits.
+4.  Le nombre de coups est incrémenté.
+5.  Les informations sur le coup joué et la nouvelle situation sont affichées à chaque itération. Ce processus se répète jusqu'à ce que la situation cible soit atteinte.
+
+---
+\section{Analyse et Évaluation}
+L'évaluation de notre algorithme a montré sa capacité à résoudre le problème du pic-vide.  L'analyse de l'évolution de la situation de jeu a révélé que notre approche évite les chemins redondants grâce à la fonction situation\_non\_vue().
+
+\subsection{Nombre de Coups}
+Le nombre de coups nécessaires varie en fonction de la configuration initiale. Pour une configuration standard, l'algorithme a résolu le problème en \textbf{X} coups. Nous avons observé que l'algorithme trouve une solution, mais pas nécessairement la plus courte.
+
+\subsection{Discussions et Améliorations}
+* \textbf{Optimalité} : L'algorithme ne garantit pas la solution optimale (le moins de coups possible), car il s'arrête dès qu'une solution est trouvée. Une approche par chaînage arrière ou une recherche plus exhaustive pourrait être explorée pour l'optimisation.
+* \textbf{Bonus} : L'ajout de nouvelles règles ou la modification du plateau de jeu pourrait être intégré. Cela nécessiterait d'adapter la fonction regle\_jeu et la structure de situation\_etudiee.
+
+---
+\section{Conclusion}
+Ce mini-projet a permis de mettre en pratique les concepts fondamentaux des systèmes experts. La création d'une base de connaissances et d'un moteur d'inférence nous a permis de résoudre le problème posé de manière efficace, tout en validant les choix techniques.
+
+\end{document}
